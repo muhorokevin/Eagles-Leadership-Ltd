@@ -2,6 +2,15 @@
 import React from 'react';
 import { CheckCircle2, Clock, MapPin, Building2, Users2, GraduationCap, HeartHandshake, Globe } from 'lucide-react';
 
+// Custom Icons needed (defined here or imported)
+const ShieldCheck = ({ size = 24, className }: { size?: number, className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+);
+
+const Anchor = ({ size = 24, className }: { size?: number, className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="5" r="3"/><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="m9 18-3-3"/><path d="m15 18 3-3"/></svg>
+);
+
 const ServicesPage: React.FC = () => {
   return (
     <div className="bg-white min-h-screen pb-20">
@@ -99,16 +108,16 @@ const ServicesPage: React.FC = () => {
             <h2 className="text-3xl font-bold mb-10 relative z-10">Who It's For</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 relative z-10">
                {[
-                 { label: "Families", icon: <HeartHandshake /> },
-                 { label: "Schools", icon: <GraduationCap /> },
-                 { label: "Corporates", icon: <Building2 /> },
-                 { label: "Global Entities", icon: <Globe /> },
-                 { label: "Gov Institutions", icon: <Anchor /> },
-                 { label: "Religious Orgs", icon: <ShieldCheck /> }
+                 { label: "Families", icon: HeartHandshake },
+                 { label: "Schools", icon: GraduationCap },
+                 { label: "Corporates", icon: Building2 },
+                 { label: "Global Entities", icon: Globe },
+                 { label: "Gov Institutions", icon: Anchor },
+                 { label: "Religious Orgs", icon: ShieldCheck }
                ].map((item, i) => (
                  <div key={i} className="text-center group">
                     <div className="bg-white w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all group-hover:bg-[#FF7F00] group-hover:text-white shadow-md">
-                      {React.cloneElement(item.icon as React.ReactElement, { size: 28 })}
+                      <item.icon size={28} />
                     </div>
                     <p className="text-xs font-bold uppercase tracking-widest">{item.label}</p>
                  </div>
@@ -142,13 +151,5 @@ const ServicesPage: React.FC = () => {
     </div>
   );
 };
-
-// Mock Icons needed (defined in components or imported)
-const ShieldCheck = ({ size = 24, className }: { size?: number, className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
-);
-const Anchor = ({ size = 24, className }: { size?: number, className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="5" r="3"/><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="m9 18-3-3"/><path d="m15 18 3-3"/></svg>
-);
 
 export default ServicesPage;
